@@ -8,6 +8,8 @@ namespace E_Commerce.Controllers
     public class HomeController : Controller
     {
         private List<Product> products=new();
+        private List<ShoppingCart> shoppingCarts=new();
+
         public HomeController()
         {
             Faker faker = new();
@@ -41,6 +43,19 @@ namespace E_Commerce.Controllers
         public IActionResult ShoppingCart()
         {
             return View();
+        }
+        [HttpGet]
+        public IActionResult AddShoppingCarts(int index)
+        {
+            Product product = products[index];
+            ShoppingCart shoppingCart = new()
+            {
+                Name = product.Name,
+                ImageUrl = product.ImageUrl,
+                Price = product.Price,
+            };
+            shoppingCarts.Add(shoppingCart);
+            return RedirectToAction("Index","Home");
         }
     }
 }

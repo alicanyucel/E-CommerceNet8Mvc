@@ -2,6 +2,8 @@
 @model List<Product>
 @{
     ViewData["Title"] = "Home Page";
+
+    int index = -1;
 }
 
 <div>
@@ -24,9 +26,9 @@
                     <h3 class="alert alert-danger">
                         @product.Price
                     </h3>
-                    <button class="btn btn-success w-100">
+                    <a href="/Home/AddShoppingCart?index=0" class="btn btn-success w-100">
                         Sepete Ekle
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
