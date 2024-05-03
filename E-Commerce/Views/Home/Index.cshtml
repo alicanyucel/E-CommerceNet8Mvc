@@ -1,25 +1,28 @@
-﻿﻿@{
+﻿
+@model List<Product>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div>
     <h3>Ana Sayfa</h3>
 </div>
-
 <div clas="mt-2">
     <div class="row">
-        <div class="col-3">
-            <div class="card">
+        @foreach (var product in Model)
+        {
+            <div class="col-3">
+                <div class="card">
                 <div class="card-body">
-                    <img src="https://images.migrosone.com/sanalmarket/product/28080000/domates-kg-c7462d-1650x1650.jpg" style="width:100%" />
+                    <img src="@product.ImageUrl" style="width:100%" />
                 </div>
-                <div class="card-header">
-                    <h6>Domates</h6>
-                    <p>Karstan gelen taze domates</p>
+                <div class="card-header" style="height:160px;overflow:hidden;">
+                    <h6>@product.Name</h6>
+                    <p>@product.Description</p>
                 </div>
                 <div class="card-body text-center">
                     <h3 class="alert alert-danger">
-                        ₺100,00
+                        @product.Price
                     </h3>
                     <button class="btn btn-success w-100">
                         Sepete Ekle
@@ -27,5 +30,6 @@
                 </div>
             </div>
         </div>
+        }
     </div>
 </div>
